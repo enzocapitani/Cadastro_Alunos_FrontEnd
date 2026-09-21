@@ -34,7 +34,7 @@ export class AbaCadastro {
     
     console.log(response.status);
 
-    //form.resetForm();
+    form.resetForm();
   }
 
 }
