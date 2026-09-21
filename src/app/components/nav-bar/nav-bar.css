@@ -1,0 +1,28 @@
+:host{
+  display: block;
+  align-items: center;
+  background-color: #0093c0;
+}
+
+.barra{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+}
+
+h1 {
+    margin-left: 30px;
+}
+
+.links{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+
+    margin-right: 30px;
+}
+
+.link{
+    font-size: large;
+    margin-right: 20px;
+}
