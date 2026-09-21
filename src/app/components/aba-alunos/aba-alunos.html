@@ -1,0 +1,11 @@
+<h1>ALUNOS</h1>
+<div class="alunos">
+    <p>Quantidade: {{alunos.length}}</p>
+
+    @for(aluno of alunos; track $index){
+        <h3>{{aluno.nome}}</h3>
+        <p>{{aluno.bairro}}</p>
+        <p>{{aluno.curso}}</p>
+        <p>{{aluno.data_nascimento}}</p>
+    }
+</div>
