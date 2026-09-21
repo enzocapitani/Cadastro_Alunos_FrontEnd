@@ -24,10 +24,23 @@ export class AlunoService {
     });
 
     if(!response.ok){
+      console.log(`[LOG] Status : ${response.status}`);
       throw new Error("ERRO AO CADASTRAR ALUNO");
     }
 
+    console.log(`[LOG] Status : ${response.status}`);
     return await response;
+  }
+
+  async receberAlunos(): Promise<Aluno[]>{
+    const response = await fetch("http://localhost:8080/alunos");
+
+    if(!response.ok){
+      console.log(`[LOG] Status : ${response.status}`);
+      throw new Error("ERRO AO RECEBER ALUNOS");
+    }
+  
+    return await response.json();
   }
 
 }
