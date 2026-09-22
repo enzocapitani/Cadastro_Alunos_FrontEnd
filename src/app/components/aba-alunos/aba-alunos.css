@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+:host{
+    display: block;
+    min-height: 100vh; /* Usa min-height para permitir rolagem em telas pequenas */
+    width: 100%;
+    background-color: #0a0457;
+}
+
+.aluno-card{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    background-color: darkcyan;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: larger;
+}
+
+.nome{
+    color: rgb(255, 251, 0);
+    font-size: x-large;
+}
+
+p {
+    margin-left: 20px;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto';
+    color: rgb(255, 251, 0);
+}
+
+h1{
+    font-family: 'Roboto';
+    color: darkorange;
+}

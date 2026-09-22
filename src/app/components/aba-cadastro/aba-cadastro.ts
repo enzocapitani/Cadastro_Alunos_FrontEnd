@@ -31,9 +31,6 @@ export class AbaCadastro {
 
   async cadastrarAluno(form: NgForm){
     const response = await this.alunoService.enviarAluno(this.aluno);
-    
-    console.log(response.status);
-
     form.resetForm();
   }
 
