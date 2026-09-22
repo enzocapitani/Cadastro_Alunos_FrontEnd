@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AlunoService } from '../../service/aluno-service/aluno-service';
 import { Aluno } from '../../types/Aluno';
+
 
 @Component({
   imports: [],
@@ -11,15 +12,22 @@ import { Aluno } from '../../types/Aluno';
 export class AbaAlunos implements OnInit {
   alunos: Aluno[] = [];
 
-  constructor(private alunoService: AlunoService){};
+  constructor(private alunoService: AlunoService, private cdr: ChangeDetectorRef){};
 
   async ngOnInit(){
-    console.log("ANTES:", this.alunos.length)
-    
-    this.alunos = await this.alunoService.receberAlunos();
+    console.log("ANTES:", this.alunos.length);
 
-    console.log("Alunos Recebidos:",this.alunos);
-    console.log("DEPOIS:", this.alunos)
+    const alunosRecebidos = await this.alunoService.receberAlunos();
+    setTimeout(() => {
+      console.log("Depois de 1 segundo:", this.alunos);
+    }, 1000);
+
+    console.log("RECEBIDOS:", alunosRecebidos);
+
+    this.alunos = alunosRecebidos;
+
+    this.cdr.detectChanges();
+
   }
 
 }
