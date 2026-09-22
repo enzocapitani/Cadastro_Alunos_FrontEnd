@@ -1,13 +1,6 @@
 import { Component, Injectable } from '@angular/core';
 import { Aluno } from '../../types/Aluno';
 
-@Component({
-  imports: [],
-  selector: 'app-aluno-service',
-  styleUrl: './aluno-service.css',
-  templateUrl: './aluno-service.html',
-})
-
 @Injectable({
   providedIn:'root'
 })
@@ -32,6 +25,7 @@ export class AlunoService {
     return await response;
   }
 
+  // Recebe todos os alunos
   async receberAlunos(): Promise<Aluno[]>{
     const response = await fetch("http://localhost:8080/alunos");
 
