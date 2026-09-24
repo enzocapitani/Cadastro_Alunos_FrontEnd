@@ -12,22 +12,23 @@ import { Aluno } from '../../types/Aluno';
 export class AbaAlunos implements OnInit {
   alunos: Aluno[] = [];
 
+  erroAoCarregar = false;
+  
   constructor(private alunoService: AlunoService, private cdr: ChangeDetectorRef){};
 
   async ngOnInit(){
-    console.log("ANTES:", this.alunos.length);
+    try {
+      
+      const alunosRecebidos = await this.alunoService.receberAlunos();
+      this.alunos = alunosRecebidos;
+      this.cdr.detectChanges();
 
-    const alunosRecebidos = await this.alunoService.receberAlunos();
-    setTimeout(() => {
-      console.log("Depois de 1 segundo:", this.alunos);
-    }, 1000);
+    } catch (error) {
 
-    console.log("RECEBIDOS:", alunosRecebidos);
-
-    this.alunos = alunosRecebidos;
-
-    this.cdr.detectChanges();
-
+      this.erroAoCarregar = true;
+      this.cdr.detectChanges();
+      
+    }
   }
 
 }

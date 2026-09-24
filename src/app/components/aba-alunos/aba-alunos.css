@@ -26,6 +26,11 @@ p {
     margin-left: 20px;
 }
 
+.mensagem-erro {
+    color: rgb(118, 27, 27);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 .top {
     display: flex;
     align-items: center;

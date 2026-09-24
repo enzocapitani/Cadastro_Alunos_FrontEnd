@@ -1,8 +1,14 @@
 <div class="top">
     <h1>ALUNOS</h1>
     
-    <p>Quantidade: {{ alunos.length }}</p>
+    <p>Matriculados: {{ alunos.length }}</p>
 </div>
+
+@if(erroAoCarregar) {
+    <div class="aluno-card">
+        <p class="mensagem-erro">Não foi possível carregar os alunos</p>
+    </div>
+}
 
 @for (aluno of alunos; track $index) {
     <div class="aluno-card">
@@ -10,4 +16,6 @@
         <p class="info">BAIRRO: {{ aluno.bairro }}</p>
         <p class="info">CURSO: {{ aluno.curso }}</p>
     </div>
+
+
 }
