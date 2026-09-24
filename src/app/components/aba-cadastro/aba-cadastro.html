@@ -1,30 +1,38 @@
+@if(erroAoCarregar){
+  <div class="aluno-card">
+        <p class="mensagem-erro">Não foi possível conectar ao servidor</p>
+    </div>
+}
+
+@if(!erroAoCarregar){
+
 <div class="card-container">
     <h1>CADASTRO DE ALUNOS</h1>
     <form #alunoForm="ngForm" (ngSubmit)="cadastrarAluno(alunoForm)">
 
       <div class="campo">
         <p class="identificador">Nome do aluno</p>
-        <input type="text" [(ngModel)]="aluno.nome" name="nome" placeholder="Insira o nome do aluno">
+        <input type="text" [(ngModel)]="aluno.nome" name="nome" placeholder="Insira o nome do aluno" required>
       </div>
       
       <div class="campo">
         <p class="identificador">Bairro:</p>
-        <input type="text" [(ngModel)]="aluno.bairro" name="nome" placeholder="Insira o bairro do aluno">
+        <input type="text" [(ngModel)]="aluno.bairro" name="nome" placeholder="Insira o bairro do aluno" required>
       </div>
       
       <div class="campo">
         <p class="identificador">Data de nascimento:</p>
-        <input type="date" [(ngModel)]="aluno.data_nascimento" name="nome" placeholder="Insira o bairro do aluno">
+        <input type="date" [(ngModel)]="aluno.data_nascimento" name="nome" placeholder="Insira o bairro do aluno" required>
       </div>
       
       <div class="campo">
         <p class="identificador">Insira o curso do aluno</p>
-      <select [(ngModel)]="aluno.curso" name="curso">
+      <select [(ngModel)]="aluno.curso" name="curso" required>
         
         <option value="" disabled selected>(Selecione o Curso)</option>
 
         @for(curso of cursos; track curso){
-          <option [value]="curso.id">{{curso.nome}}</option>
+          <option>{{curso}}</option>
         }
       </select>
       
@@ -33,3 +41,4 @@
     </div>
     </form>
   </div>
+}

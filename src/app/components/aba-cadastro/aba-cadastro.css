@@ -36,3 +36,18 @@ h1 {
     background-color: #3af501;
     margin: 14px;
 }
+
+.aluno-card{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    background-color: darkcyan;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: larger;
+}
+
+.mensagem-erro {
+    color: rgb(118, 27, 27);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

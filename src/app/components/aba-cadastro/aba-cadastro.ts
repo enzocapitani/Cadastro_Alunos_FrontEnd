@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AlunoService } from '../../service/aluno-service/aluno-service';
+import { CursoService } from '../../service/curso-service/curso-service';
 
 @Component({
   imports: [FormsModule],
@@ -9,7 +10,7 @@ import { AlunoService } from '../../service/aluno-service/aluno-service';
   templateUrl: './aba-cadastro.html',
 })
 
-export class AbaCadastro {
+export class AbaCadastro implements OnInit{
 
   aluno = {
     nome: '',
@@ -18,19 +19,34 @@ export class AbaCadastro {
     curso: '',
   };
 
-  cursos = [
-    {id:'JAVA', nome:'CURSO DE JAVA'},
-    {id:'PYTHON', nome:'CURSO DE PYTHON'},
-    {id:'PROG LOGICA', nome:'CURSO DE LÓGICA DE PROGRAMAÇÂO'},
-    {id:'DB', nome:'CURSO DE BANCO DE DADOS'},
-    {id:'ANGULAR', nome:'CURSO DE ANGULAR'},
-    {id:'MUSICA', nome:'CURSO DE MUSICA'}
-  ];
+  cursos = [];
 
-  constructor(private alunoService: AlunoService){}
+  erroAoCarregar = false;
+
+  constructor(private alunoService: AlunoService, 
+    private cursoService: CursoService,
+    private cdr: ChangeDetectorRef 
+  ){};
+
+  async ngOnInit(){
+    try{
+      this.cursos = await this.cursoService.receberNomes();
+      console.log(this.cursos);
+    } catch(error) {
+      this.erroAoCarregar = true;
+      console.log(`[ERROR] ${error}`);
+    }
+    this.cdr.detectChanges();
+  }
 
   async cadastrarAluno(form: NgForm){
-    const response = await this.alunoService.enviarAluno(this.aluno);
+    try {
+      const response = await this.alunoService.enviarAluno(this.aluno); 
+    } catch (error) {
+      this.erroAoCarregar = true;
+      console.log(`[ERROR] ${error}`);
+    }
+    this.cdr.detectChanges();
     form.resetForm();
   }
 
